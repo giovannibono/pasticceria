@@ -11,6 +11,13 @@
     --bianco-puro: #FFFFFF;
 }
 
+/* Miglioramento contrasto oro/sfondo su mobile */
+@media (max-width: 768px) {
+    :root {
+        --oro-satinato: #a5855f; /* oro un po' più scuro per maggiore contrasto */
+    }
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--seta-avorio);
@@ -335,7 +342,6 @@ nav a:hover {
     background-image: url('pasticceria.webp');
 }
 
-
 .firma-image img {
     width: 100%;
     height: 100%;
@@ -383,7 +389,6 @@ nav a:hover {
     padding: 40px;
 }
 
-
 .firma-name {
     font-family: 'Cinzel', serif;
     font-size: 42px;
@@ -392,7 +397,6 @@ nav a:hover {
     margin-bottom: 20px;
     letter-spacing: 1px;
 }
-
 
 .firma-description {
     font-family: 'Montserrat', sans-serif;
@@ -651,57 +655,231 @@ body {
     }
 }
 
+/* ************************* */
+/* ****** MOBILE CSS ******* */
+/* ************************* */
+
 @media (max-width: 768px) {
-    .hero {
-        padding: 60px 0;
-    }
 
-    .hero-content {
-        padding: 100px 20px 60px;
+    /* Header & Nav */
+    header, .heritage-header {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
-
-    .firme-section {
-        padding: 60px 20px;
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 10px;
     }
-
-    .heritage-section {
-        padding: 60px 0;
+    .logo {
+        align-items: center;
+        text-align: center;
+        width: 100%;
     }
-
-    .heritage-slider {
-        grid-template-columns: 1fr;
-        padding: 0 20px;
+    .logo-main {
+        font-size: 1.8rem !important;
     }
-
-    .hero-title {
-        font-size: 48px;
+    .logo-subtitle {
+        margin-left: 0;
+        margin-top: 4px;
+        color: var(--oro-satinato);
     }
-
-    .section-title {
-        font-size: 36px;
-    }
-
     nav {
-        gap: 20px;
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-top: 12px;
     }
-
     nav a {
-        font-size: 11px;
+        display: block;
+        margin: 0 auto;
+        font-size: 0.8rem !important;
+        color: var(--oro-satinato);
+        text-align: center;
+        letter-spacing: 1.5px;
+        opacity: 0.94;
+        /* accentua la visibilità oro */
+        padding: 6px 0;
     }
+    /* Se vuoi nascondere del tutto (alternativa commentando sopra): */
+    /* nav { display: none; } */
 
-    .firma-image {
-        background-size: cover;
-        background-position: center;
+    /* Tipografia Hero */
+    .hero-title {
+        font-size: 2.5rem !important;
+        line-height: 1.15;
+        margin-bottom: 18px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.4);
     }
-
-    #caffetteria .firma-image,
-    #pasticceria .firma-image {
-        background-size: cover;
-        background-position: center;
+    .hero-description {
+        font-size: 1.1rem !important;
+        margin-bottom: 30px;
+        color: var(--bianco-puro);
     }
-
+    .hero {
+        padding: 140px 0 30px 0 !important;
+        /* Padding-top maggiorato */
+    }
+    .hero-content {
+        padding: 0 16px 40px 16px !important;
+    }
     .hero-background {
         background-size: cover;
         background-position: center;
+    }
+
+    /* Sezioni -- Uniforma lo spacing delle section principali */
+    section,
+    .firme-section,
+    .heritage-section,
+    footer {
+        padding: 50px 20px !important;
+    }
+
+    /* Heritage slider - una sola colonna */
+    .heritage-slider {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+        padding: 0 !important;
+    }
+    .heritage-card:not(:last-child) {
+        margin-bottom: 30px !important;
+    }
+    .heritage-card:last-child {
+        margin-bottom: 0 !important;
+    }
+    .heritage-card-image,
+    .heritage-card-image img {
+        height: 250px !important;
+        min-height: 250px !important;
+        max-height: 250px !important;
+        aspect-ratio: unset !important;
+        object-fit: cover !important;
+    }
+    .heritage-year {
+        font-size: 2rem !important;
+        color: var(--oro-satinato);
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .heritage-text {
+        font-size: 1rem !important;
+    }
+    .heritage-header {
+        text-align: center;
+        padding: 0 !important;
+        margin-bottom: 25px !important;
+    }
+
+    /* Sezione Le Nostre Firme centrata */
+    .firme-section,
+    .section-header {
+        text-align: center !important;
+    }
+    .section-title,
+    .section-subtitle {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .firme-container {
+        padding: 0;
+        max-width: 100%;
+    }
+    .firma-card {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 30px !important;
+        margin-bottom: 35px !important;
+    }
+    .firma-card:not(:last-child) {
+        margin-bottom: 35px !important;
+    }
+    .firma-image {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: 250px !important;
+        margin-bottom: 20px !important;
+        border-radius: 8px !important;
+        background-position: center !important;
+        background-size: cover !important;
+    }
+    #caffetteria .firma-image,
+    #pasticceria .firma-image {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: 250px !important;
+        margin-bottom: 20px !important;
+        border-radius: 8px !important;
+        background-position: center !important;
+        background-size: cover !important;
+    }
+    .firma-content {
+        padding: 0 0 20px 0 !important;
+        text-align: center !important;
+    }
+    .firma-name {
+        font-size: 1.5rem !important;
+        color: var(--oro-satinato);
+        text-align: center;
+        margin-bottom: 14px !important;
+    }
+    .firma-description,
+    .firma-link {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        font-size: 1rem !important;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+        justify-items: center;
+        text-align: center !important;
+        padding: 0 !important;
+    }
+    .footer-section,
+    .footer-brand,
+    .footer-section-title,
+    .footer-tagline,
+    .footer-link,
+    .footer-address {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .directions-button {
+        width: 100% !important;
+        padding: 15px !important;
+        font-size: 1rem !important;
+        box-sizing: border-box;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    .footer-bottom {
+        font-size: 0.95rem !important;
+        margin-top: 25px;
+        text-align: center;
+    }
+}
+
+/* Fix ulteriori: elimina buchi bianchi extra anche su padding bottom vari section */
+section,
+.firme-section,
+.heritage-section {
+    padding-bottom: 80px;
+}
+@media (max-width: 768px) {
+    section,
+    .firme-section,
+    .heritage-section {
+        padding-bottom: 50px !important;
     }
 }

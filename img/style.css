@@ -1,0 +1,707 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --seta-avorio: #FCFBF4;
+    --oro-satinato: #C5A47E;
+    --marrone-fondente: #1B120B;
+    --bianco-puro: #FFFFFF;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--seta-avorio);
+    color: var(--marrone-fondente);
+    overflow-x: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.03"/></svg>');
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Header */
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 30px 60px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header.scrolled {
+    position: fixed;
+    padding: 18px 60px;
+    background: var(--seta-avorio);
+    z-index: 1000;
+}
+
+header.scrolled .header-content {
+    border-bottom: 1px solid var(--oro-satinato);
+    padding-bottom: 15px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    background-color: transparent;
+    border-bottom: 1px solid var(--oro-satinato);
+    padding-bottom: 20px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.logo-main {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--oro-satinato);
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+.logo-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--oro-satinato);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-left: 45px;
+    margin-top: -5px;
+}
+
+nav {
+    display: flex;
+    gap: 0;
+    align-items: center;
+}
+
+nav a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--oro-satinato);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-left: 40px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: inline-block;
+}
+
+nav a:first-child {
+    margin-left: 0;
+}
+
+nav a:hover {
+    opacity: 0.7;
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 80px 0;
+    margin: 0;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('immagine_hero.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.7);
+    animation: kenBurns 20s ease-in-out infinite;
+    transform: scale(1);
+}
+
+@media (max-width: 768px) {
+    .hero-background {
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+@keyframes kenBurns {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(27, 18, 11, 0.4);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: var(--bianco-puro);
+    padding: 150px 20px 100px;
+}
+
+.hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    color: var(--bianco-puro);
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.hero-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 18px 50px;
+    background: transparent;
+    color: var(--oro-satinato);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--oro-satinato);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #C5A47E;
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
+
+.cta-button:hover {
+    color: var(--bianco-puro);
+    border-color: #C5A47E;
+}
+
+.cta-button:hover::before {
+    left: 0;
+    background: #C5A47E;
+}
+
+/* Sezione Le Nostre Firme */
+.firme-section {
+    padding: 80px 60px;
+    background: var(--seta-avorio);
+    position: relative;
+    z-index: 2;
+    margin: 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--oro-satinato);
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--marrone-fondente);
+    letter-spacing: 1px;
+}
+
+.heritage-header .section-title {
+    color: #222222;
+}
+
+.firme-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.firma-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    gap: 80px;
+}
+
+.firma-card:not(:last-child) {
+    margin-bottom: 80px;
+}
+
+.firma-card.reverse {
+    flex-direction: row-reverse;
+}
+
+.firma-image {
+    flex: 1;
+    min-width: 500px;
+    height: 550px;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#caffetteria .firma-image {
+    background-image: url('caffetteria.webp');
+}
+
+#pasticceria .firma-image {
+    background-image: url('pasticceria.webp');
+}
+
+
+.firma-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1.05);
+    display: none;
+}
+
+#caffetteria .firma-image img,
+#pasticceria .firma-image img {
+    display: none;
+}
+
+.firma-image::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--oro-satinato);
+    background: rgba(27, 18, 11, 0.85);
+    padding: 12px 24px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+}
+
+.firma-card:hover .firma-image img {
+    transform: scale(1);
+}
+
+.firma-card:hover .firma-image::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.firma-content {
+    flex: 1;
+    padding: 40px;
+}
+
+
+.firma-name {
+    font-family: 'Cinzel', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--oro-satinato);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+
+.firma-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 35px;
+}
+
+.firma-link {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--oro-satinato);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: gap 0.4s ease;
+}
+
+.firma-link:hover {
+    gap: 15px;
+}
+
+/* Sezione Heritage */
+.heritage-section {
+    padding: 80px 0;
+    background: linear-gradient(to bottom, var(--seta-avorio), #f7f5ed);
+    position: relative;
+    z-index: 2;
+    overflow: visible;
+    margin: 0;
+}
+
+.heritage-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 60px;
+}
+
+.heritage-card:last-child {
+    margin-bottom: 0;
+}
+
+.heritage-slider {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 0 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.heritage-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.heritage-card {
+    background: var(--bianco-puro);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(27, 18, 11, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.heritage-card-image {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.heritage-card-image img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    object-position: center;
+}
+
+.heritage-image-1966 {
+    object-position: bottom;
+}
+
+.heritage-image-2000 {
+    filter: contrast(1.1) brightness(0.95);
+}
+
+.heritage-card-image {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 16/9;
+}
+
+.heritage-card-content {
+    padding: 40px;
+    position: relative;
+    z-index: 1;
+    background: var(--bianco-puro);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.heritage-year {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--oro-satinato);
+    margin-bottom: 15px;
+}
+
+.heritage-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--marrone-fondente);
+}
+
+/* Footer */
+footer {
+    background: var(--marrone-fondente);
+    padding: 60px 60px;
+    color: var(--bianco-puro);
+    position: relative;
+    z-index: 2;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 80px;
+    padding: 0 20px;
+}
+
+.footer-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--oro-satinato);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.footer-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--oro-satinato);
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.footer-link {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: color 0.4s ease;
+}
+
+.footer-link:hover {
+    color: var(--oro-satinato);
+}
+
+.footer-address {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+}
+
+.directions-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background: transparent;
+    color: var(--oro-satinato);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--oro-satinato);
+    transition: all 0.4s ease;
+}
+
+.directions-button:hover {
+    background: var(--oro-satinato);
+    color: var(--marrone-fondente);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid rgba(198, 168, 114, 0.2);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 1024px) {
+    .firma-card {
+        flex-direction: column !important;
+        gap: 40px;
+    }
+
+    .firma-image {
+        min-width: 100%;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    #caffetteria .firma-image,
+    #pasticceria .firma-image {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero-content {
+        padding: 100px 20px 60px;
+    }
+
+    .firme-section {
+        padding: 60px 20px;
+    }
+
+    .heritage-section {
+        padding: 60px 0;
+    }
+
+    .heritage-slider {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+
+    .hero-title {
+        font-size: 48px;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    nav {
+        gap: 20px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    .firma-image {
+        background-size: cover;
+        background-position: center;
+    }
+
+    #caffetteria .firma-image,
+    #pasticceria .firma-image {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .hero-background {
+        background-size: cover;
+        background-position: center;
+    }
+}
